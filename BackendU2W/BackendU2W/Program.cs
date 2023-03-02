@@ -1,4 +1,12 @@
+using BackendU2W.DbContext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configuramos la conexion a sql server
+builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
+        opciones.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql"))
+);
 
 // Add services to the container.
 
@@ -17,6 +25,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseRouting();
 
 app.UseAuthorization();
 

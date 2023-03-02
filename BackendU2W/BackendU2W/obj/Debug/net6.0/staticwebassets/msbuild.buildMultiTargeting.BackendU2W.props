@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BackendU2W.props" />
+</Project>
