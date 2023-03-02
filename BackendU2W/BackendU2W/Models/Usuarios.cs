@@ -45,5 +45,8 @@ namespace BackendU2W.Models
         [DataType(DataType.Date)]
         [DefaultValue(null)]
         public Nullable<DateTime> delete_date { get; set; }
+
+        //Esto de abajo es una referencia a Objetivos (Un usuario muchos objetivos)
+        public List<Objetivos> Objetivos { get; set; }
     }
 }

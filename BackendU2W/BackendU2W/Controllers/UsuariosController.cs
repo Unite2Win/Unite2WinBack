@@ -62,7 +62,7 @@ namespace BackendU2W.Controllers
         }
 
         // DELETE api/<UsuariosController>/5
-        [HttpPut("delete/{id}")]
+        [HttpPut("{id}/delete")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
