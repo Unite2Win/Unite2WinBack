@@ -53,6 +53,8 @@ namespace BackendU2W.Controllers
         {
             if (id != usuario.id_usu) return BadRequest();
 
+            usuario.last_modified = DateTime.Now;
+
             _contexto.Entry(usuario).State = EntityState.Modified;
             await _contexto.SaveChangesAsync();
 
