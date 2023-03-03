@@ -10,16 +10,15 @@ namespace BackendU2W.Models
         [Key]
         public int id_plan { get; set; }
 
-        //Falta FK
         [ForeignKey("comunidad")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_com { get; set; }
-        //Esto de abajo es una referencia a Usuarios
+        //Esto de abajo es una referencia a Comunidades
         public Comunidades comunidad { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [MaxLength(50, ErrorMessage = "Este campo debe tener un máximo de 50")]
-        public string name { get; set; }
+        public string nombre { get; set; }
 
         [DefaultValue("Descripción del plan")]
         [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 50")]

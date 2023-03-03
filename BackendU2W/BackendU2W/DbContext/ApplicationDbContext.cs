@@ -1,5 +1,6 @@
 ﻿using BackendU2W.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 
 namespace BackendU2W.DbContext
 {
@@ -35,6 +36,13 @@ namespace BackendU2W.DbContext
             var comunidad4 = new Comunidades() { id_com = 4, nombre = "Comunidad4", descripcion = "Esta es al comunidad4", clave = "12345", picture = "imagen4", banner = "banner4", create_date = DateTime.Today };
 
             modelBuilder.Entity<Comunidades>().HasData(new Comunidades[] { comunidad1, comunidad2, comunidad3, comunidad4 });
+
+            var plan2 = new Planes() { id_plan = 2, id_com = 2, nombre = "Plan2", descripcion = "Este es el plan2", duracion = DuracionPlanes.Semana, create_date = DateTime.Today };
+            var plan1 = new Planes() { id_plan = 1, id_com = 3, nombre = "Plan1", descripcion = "Este es el plan1", duracion = DuracionPlanes.Semana, create_date = DateTime.Today };
+            var plan3 = new Planes() { id_plan = 3, id_com = 2, nombre = "Plan3", create_date = DateTime.Today };
+            var plan4 = new Planes() { id_plan = 4, id_com = 1, nombre = "Plan4", descripcion = "Este es el plan4", duracion = DuracionPlanes.Mes, create_date = DateTime.Today };
+
+            modelBuilder.Entity<Planes>().HasData(new Planes[] { plan1, plan2, plan3, plan4 });
 
             base.OnModelCreating(modelBuilder);
         }
