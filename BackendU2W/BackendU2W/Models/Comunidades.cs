@@ -41,5 +41,7 @@ namespace BackendU2W.Models
 
         //Esto de abajo es una referencia a Objetivos (Un usuario muchos objetivos)
         public List<Planes> Planes { get; set; }
+
+        public ICollection<ComunidadesUsuarios> ComunidadesUsuarios { get; set; }
     }
 }

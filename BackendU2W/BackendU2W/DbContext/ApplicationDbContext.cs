@@ -1,4 +1,5 @@
 ﻿using BackendU2W.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Numerics;
 
@@ -12,6 +13,8 @@ namespace BackendU2W.DbContext
         public DbSet<Objetivos> Objetivos { get; set; }
         public DbSet<Planes> Planes { get; set; }
         public DbSet<Comunidades> Comunidades { get; set; }
+        public DbSet<ComunidadesUsuarios> ComunidadesUsuarios { get; set; }
+        public DbSet<Posts> Posts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -44,7 +47,29 @@ namespace BackendU2W.DbContext
 
             modelBuilder.Entity<Planes>().HasData(new Planes[] { plan1, plan2, plan3, plan4 });
 
-            base.OnModelCreating(modelBuilder);
+            var comunidades_usuarios1 = new ComunidadesUsuarios() { id_com_usu = 1, id_com = 2, id_usu = 1, apodo = "Plan2", nivel = 10, avatar = "avatar1", tipoUsuario = tipo_usuario.Admin, create_date = DateTime.Today };
+            var comunidades_usuarios2 = new ComunidadesUsuarios() { id_com_usu = 2, id_com = 3, id_usu = 2, apodo = "Plan1", avatar = "avatar2", tipoUsuario = tipo_usuario.Mod, create_date = DateTime.Today };
+            var comunidades_usuarios3 = new ComunidadesUsuarios() { id_com_usu = 3, id_com = 2, id_usu = 2, apodo = "Plan3", nivel = 30, tipoUsuario = tipo_usuario.Miembro, create_date = DateTime.Today };
+            var comunidades_usuarios4 = new ComunidadesUsuarios() { id_com_usu = 4, id_com = 1, id_usu = 3, apodo = "Plan4", tipoUsuario = tipo_usuario.Miembro, create_date = DateTime.Today };
+
+            modelBuilder.Entity<ComunidadesUsuarios>().HasData(new ComunidadesUsuarios[] { comunidades_usuarios1, comunidades_usuarios2, comunidades_usuarios3, comunidades_usuarios4 });
+
+            var post1 = new Posts() { id_post = 1, id_com_usu = 2, titulo = "Plan2", descripcion = "Descripcion del post1", create_date = DateTime.Today };
+            var post2 = new Posts() { id_post = 2, id_com_usu = 3, titulo = "Plan1", create_date = DateTime.Today };
+            var post3 = new Posts() { id_post = 3, id_com_usu = 2, titulo = "Plan3", descripcion = "Descripcion del post3", create_date = DateTime.Today };
+            var post4 = new Posts() { id_post = 4, id_com_usu = 1, titulo = "Plan4", descripcion = "Descripcion del post4", create_date = DateTime.Today };
+
+            modelBuilder.Entity<Posts>().HasData(new Posts[] { post1, post2, post3, post4 });
+
+            modelBuilder.Entity<ComunidadesUsuarios>(b =>
+            {
+                b.ToTable("ComunidadesUsuarios");
+
+                b.HasKey(x => new { x.id_com_usu, x.id_com, x.id_usu });
+            });
+
+
+           base.OnModelCreating(modelBuilder);
         }
         //Cuando crear migraciones (buenas practicas)
         // 1- Cuando se crea una nueva clase (nueva tabla en la bd)

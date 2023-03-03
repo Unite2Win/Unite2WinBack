@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -48,5 +49,7 @@ namespace BackendU2W.Models
 
         //Esto de abajo es una referencia a Objetivos (Un usuario muchos objetivos)
         public List<Objetivos> Objetivos { get; set; }
+
+        public ICollection<ComunidadesUsuarios> ComunidadesUsuarios { get; set; }
     }
 }
