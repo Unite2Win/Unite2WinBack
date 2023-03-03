@@ -14,10 +14,12 @@ namespace BackendU2W.Models
         [MaxLength(50, ErrorMessage = "Este campo debe tener un máximo de 50")]
         public string nombre { get; set; }
 
+        [DefaultValue("Descripción de la comunidad")]
+        [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 50")]
         public string? descripcion { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
-        public Duracion duracion { get; set; }
+        public DuracionObjetivos duracion { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [DataType(DataType.Date)]
@@ -39,7 +41,7 @@ namespace BackendU2W.Models
         public Usuarios usuario { get; set; }
     }
 
-    public enum Duracion
+    public enum DuracionObjetivos
     {
         Dia, Semana, Mes
     }

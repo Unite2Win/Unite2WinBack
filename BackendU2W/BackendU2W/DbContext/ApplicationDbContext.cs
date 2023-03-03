@@ -9,6 +9,9 @@ namespace BackendU2W.DbContext
 
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Objetivos> Objetivos { get; set; }
+        public DbSet<Planes> Planes { get; set; }
+        public DbSet<Comunidades> Comunidades { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,12 +22,19 @@ namespace BackendU2W.DbContext
             
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios[] { usuario1, usuario2, usuario3, usuario4});
 
-            var objetivo1 = new Objetivos() { id_obj = 1, id_usu = 1, nombre = "Objetivo1", descripcion = "Este es el objetivo1", duracion = Duracion.Dia, create_date = DateTime.Today };
-            var objetivo2 = new Objetivos() { id_obj = 2, id_usu = 1, nombre = "Objetivo2", duracion = Duracion.Semana, create_date = DateTime.Today };
-            var objetivo3 = new Objetivos() { id_obj = 3, id_usu = 3, nombre = "Objetivo3", duracion = Duracion.Semana, create_date = DateTime.Today };
-            var objetivo4 = new Objetivos() { id_obj = 4, id_usu = 4, nombre = "Objetivo4", duracion = Duracion.Mes, create_date = DateTime.Today };
+            var objetivo1 = new Objetivos() { id_obj = 1, id_usu = 1, nombre = "Objetivo1", descripcion = "Este es el objetivo1", duracion = DuracionObjetivos.Dia, create_date = DateTime.Today };
+            var objetivo2 = new Objetivos() { id_obj = 2, id_usu = 1, nombre = "Objetivo2", duracion = DuracionObjetivos.Semana, create_date = DateTime.Today };
+            var objetivo3 = new Objetivos() { id_obj = 3, id_usu = 3, nombre = "Objetivo3", duracion = DuracionObjetivos.Semana, create_date = DateTime.Today };
+            var objetivo4 = new Objetivos() { id_obj = 4, id_usu = 4, nombre = "Objetivo4", duracion = DuracionObjetivos.Mes, create_date = DateTime.Today };
 
             modelBuilder.Entity<Objetivos>().HasData(new Objetivos[] { objetivo1, objetivo2, objetivo3, objetivo4});
+
+            var comunidad1 = new Comunidades() { id_com = 1, nombre = "Comunidad1", descripcion = "Esta es al comunidad1", clave = "12345", picture = "imagen1", banner = "banner1", create_date = DateTime.Today };
+            var comunidad2 = new Comunidades() { id_com = 2, nombre = "Comunidad2", descripcion = "Esta es al comunidad2", clave = "12345", picture = "imagen2", banner = "banner2", create_date = DateTime.Today };
+            var comunidad3 = new Comunidades() { id_com = 3, nombre = "Comunidad3", clave = "12345", picture = "imagen3", banner = "banner3", create_date = DateTime.Today };
+            var comunidad4 = new Comunidades() { id_com = 4, nombre = "Comunidad4", descripcion = "Esta es al comunidad4", clave = "12345", picture = "imagen4", banner = "banner4", create_date = DateTime.Today };
+
+            modelBuilder.Entity<Comunidades>().HasData(new Comunidades[] { comunidad1, comunidad2, comunidad3, comunidad4 });
 
             base.OnModelCreating(modelBuilder);
         }
