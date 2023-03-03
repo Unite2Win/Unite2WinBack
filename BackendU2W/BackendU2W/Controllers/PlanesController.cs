@@ -30,7 +30,7 @@ namespace BackendU2W.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var planes = await _contexto.Planes.FindAsync(id);
-            return planes == null ? NotFound() : Ok(planes);
+            return planes == null || planes.delete_date != null ? NotFound() : Ok(planes);
         }
 
         // GET api/<PlanesController>/comunidadId/5

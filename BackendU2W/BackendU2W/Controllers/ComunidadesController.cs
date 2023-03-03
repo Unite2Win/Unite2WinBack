@@ -29,7 +29,7 @@ namespace BackendU2W.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var comunidad = await _contexto.Comunidades.FindAsync(id);
-            return comunidad == null ? NotFound() : Ok(comunidad);
+            return comunidad == null || comunidad.delete_date != null ? NotFound() : Ok(comunidad);
         }
 
         // POST api/<ComunidadesController>

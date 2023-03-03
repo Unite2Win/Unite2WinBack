@@ -31,7 +31,7 @@ namespace BackendU2W.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var usuario = await _contexto.Usuarios.FindAsync(id);
-            return usuario == null ? NotFound() : Ok(usuario);
+            return usuario == null || usuario.delete_date != null ? NotFound() : Ok(usuario);
         }
 
         // POST api/<UsuariosController>

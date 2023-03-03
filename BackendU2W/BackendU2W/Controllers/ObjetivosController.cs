@@ -30,7 +30,7 @@ namespace BackendU2W.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var objetivo = await _contexto.Objetivos.FindAsync(id);
-            return objetivo == null ? NotFound() : Ok(objetivo);
+            return objetivo == null || objetivo.delete_date != null ? NotFound() : Ok(objetivo);
         }
 
         // GET api/<ObjetivosController>/usuarioId/5
