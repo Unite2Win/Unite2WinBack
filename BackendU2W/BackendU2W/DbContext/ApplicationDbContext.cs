@@ -64,12 +64,16 @@ namespace BackendU2W.DbContext
             modelBuilder.Entity<ComunidadesUsuarios>(b =>
             {
                 b.ToTable("ComunidadesUsuarios");
-
                 b.HasKey(x => new { x.id_com_usu, x.id_com, x.id_usu });
             });
 
+            modelBuilder.Entity<Posts>()
+                .HasOne(e => e.comunidadesUsuarios)
+                .WithMany(e => e.Posts)
+                .HasForeignKey(e => e.id_com_usu)
+                .HasPrincipalKey(e => e.id_com_usu);
 
-           base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
         //Cuando crear migraciones (buenas practicas)
         // 1- Cuando se crea una nueva clase (nueva tabla en la bd)

@@ -29,6 +29,8 @@ namespace BackendU2W.Models
         public int id_usu { get; set; }
         public Usuarios usuario { get; set; }
 
+        public ICollection<Posts> Posts { get; set; }
+
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [MaxLength(50, ErrorMessage = "Este campo debe tener un máximo de 50")]
         public string apodo { get; set; }

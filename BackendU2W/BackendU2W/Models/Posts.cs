@@ -20,7 +20,6 @@ namespace BackendU2W.Models
         [StringLength(100, MinimumLength = 1, ErrorMessage = "Este campo debe tener un mínimo de 1 caractéres y máximo de 50")]
         public string titulo { get; set; }
 
-        [Required(ErrorMessage = "Este campo es obligatorio")]
         [StringLength(500, MinimumLength = 1, ErrorMessage = "Este campo debe tener un mínimo de 1 caractéres y máximo de 50")]
         public string? descripcion { get; set; }
 

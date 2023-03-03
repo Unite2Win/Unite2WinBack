@@ -32,6 +32,13 @@ namespace BackendU2W.Controllers
             return post == null || post.delete_date != null ? NotFound() : Ok(post);
         }
 
+        // GET api/<ObjetivosController>/comunidadUsuariosId/5
+        [HttpGet("{id}/comunidadUsuariosId")]
+        [ProducesResponseType(typeof(Posts), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IEnumerable<Posts>> GetByIdPost(int id)
+            => await _contexto.Posts.Where(post => post.id_com_usu == id && post.delete_date == null).ToListAsync();
+
         // POST api/<PostsController>
         [HttpPost]
         public async Task<IActionResult> Post(Posts post)
