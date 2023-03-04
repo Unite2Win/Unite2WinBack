@@ -34,6 +34,12 @@ namespace BackendU2W.Controllers
             return usuario == null || usuario.delete_date != null ? NotFound() : Ok(usuario);
         }
 
+        //[HttpGet("comunidadesUsuario/{id}")]
+        //[ProducesResponseType(typeof(ComunidadesUsuarios), StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //public async Task<IEnumerable<ComunidadesUsuarios>> GetByIdUsuario(int id)
+        //    => await _contexto.ComunidadesUsuarios.Where(comunidadUsuarios => comunidadUsuarios.delete_date == null && comunidadUsuarios.id_usu == id).ToListAsync();
+
         // POST api/<UsuariosController>
         [HttpPost]
         public async Task<IActionResult> Post(Usuarios usuario)

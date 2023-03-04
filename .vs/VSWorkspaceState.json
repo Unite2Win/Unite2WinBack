@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BackendU2W",
+    "\\BackendU2W\\BackendU2W",
+    "\\BackendU2W\\BackendU2W\\Controllers",
+    "\\BackendU2W\\BackendU2W\\DbContext",
+    "\\BackendU2W\\BackendU2W\\Migrations",
+    "\\BackendU2W\\BackendU2W\\Models"
+  ],
+  "SelectedNode": "\\BackendU2W\\BackendU2W\\Controllers\\PostsController.cs",
+  "PreviewInSolutionExplorer": false
+}

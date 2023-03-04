@@ -61,11 +61,31 @@ namespace BackendU2W.DbContext
 
             modelBuilder.Entity<Posts>().HasData(new Posts[] { post1, post2, post3, post4 });
 
-            modelBuilder.Entity<ComunidadesUsuarios>(b =>
-            {
-                b.ToTable("ComunidadesUsuarios");
-                b.HasKey(x => new { x.id_com_usu, x.id_com, x.id_usu });
-            });
+            //modelBuilder.Entity<ComunidadesUsuarios>(b =>
+            //{
+            //    b.ToTable("Tbl_ComunidadesUsuarios");
+            //});
+
+            //modelBuilder.Entity<ComunidadesUsuarios>()
+            //    .HasOne(e => e.usuario)
+            //    .WithMany(e => e.ComunidadesUsuarios)
+            //    .HasForeignKey(e => e.id_usu)
+            //    .HasPrincipalKey(e => e.id_usu);
+
+
+            modelBuilder.Entity<ComunidadesUsuarios>().HasAlternateKey(c => new { c.id_com, c.id_usu }).HasName("IX_UniqueFKs");
+
+            modelBuilder.Entity<Usuarios>()
+                .HasMany(e => e.ComunidadesUsuarios)
+                .WithOne(e => e.usuario)
+                .HasForeignKey(e => e.id_usu)
+                .HasPrincipalKey(e => e.id_usu);
+
+            modelBuilder.Entity<Comunidades>()
+                .HasMany(e => e.ComunidadesUsuarios)
+                .WithOne(e => e.comunidad)
+                .HasForeignKey(e => e.id_com)
+                .HasPrincipalKey(e => e.id_com);
 
             modelBuilder.Entity<Posts>()
                 .HasOne(e => e.comunidadesUsuarios)

@@ -7,13 +7,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackendU2W.Models
 {
-    //[Index(nameof(apodo), IsUnique = true)]
     //[PrimaryKey(nameof(id_com_usu), nameof(id_com), nameof(id_usu))]
+    [Table("Tbl_ComunidadesUsuarios")]
+    //[Index(nameof(id_com), nameof(id_usu), IsUnique = true)]
     public class ComunidadesUsuarios
     {
-        //[Key]
+
         //[Column(Order = 1)]
+        [Key]
         public int id_com_usu { get; set; }
+
 
         //[Key]
         //[Column(Order = 2)]
