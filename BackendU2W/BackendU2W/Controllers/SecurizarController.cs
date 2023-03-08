@@ -25,7 +25,7 @@ namespace APIReservas.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Usuarios _userData)
+        public async Task<IActionResult> Post(LoginModel _userData)
         {
             if (_userData != null && _userData.nick != null && _userData.password != null)
             {
@@ -37,11 +37,12 @@ namespace APIReservas.Controllers
                     var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserId", userCompleto.id_usu.ToString()),
-                        new Claim("DisplayName", userCompleto.nick),
-                        new Claim("Nivel", userCompleto.level.ToString()),
-                        new Claim("Activo", userCompleto.active.ToString())
+                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString())
+                        //new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                        //new Claim("UserId", userCompleto.id_usu.ToString()),
+                        //new Claim("DisplayName", userCompleto.nick),
+                        //new Claim("Nivel", userCompleto.level.ToString()),
+                        //new Claim("Activo", userCompleto.active.ToString())
 
                     };
 
@@ -56,8 +57,8 @@ namespace APIReservas.Controllers
 
                     var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
-                    //return Ok(new AuthenticatedResponse { User_ID = Convert.ToString(userCompleto.id_usu) ,Token = tokenString });
+                    return Ok(new AuthenticatedResponse { User_ID = Convert.ToString(userCompleto.id_usu), Token = tokenString });
+                    //return Ok(new JwtSecurityTokenHandler().WriteToken(token));
                     //return Ok(token);
                 }
                 else
