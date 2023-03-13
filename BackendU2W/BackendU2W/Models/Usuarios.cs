@@ -19,9 +19,9 @@ namespace BackendU2W.Models
         [StringLength(50, MinimumLength = 8, ErrorMessage = "Este campo debe tener un mínimo de 8 caractéres y máximo de 50")]
         public string password { get; set; }
 
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        //[Required(ErrorMessage = "Este campo es obligatorio")]
         //public byte[] picture { get; set; }
-        public string picture { get; set; }
+        public Documentos? picture { get; set; }
 
         [DefaultValue(1)]
         //[Range(100, Int32.MaxValue)]
@@ -48,8 +48,10 @@ namespace BackendU2W.Models
         public Nullable<DateTime> delete_date { get; set; }
 
         //Esto de abajo es una referencia a Objetivos (Un usuario muchos objetivos)
-        public List<Objetivos> Objetivos { get; set; }
+        public Perfiles? perfil { get; set; }
 
-        public ICollection<ComunidadesUsuarios> ComunidadesUsuarios { get; set; }
+        public List<Objetivos>? Objetivos { get; set; }
+
+        public ICollection<ComunidadesUsuarios>? ComunidadesUsuarios { get; set; }
     }
 }

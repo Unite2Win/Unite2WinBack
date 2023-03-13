@@ -13,6 +13,7 @@ namespace BackendU2W.Models
         [ForeignKey("comunidad")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_com { get; set; }
+
         //Esto de abajo es una referencia a Comunidades
         public Comunidades comunidad { get; set; }
 

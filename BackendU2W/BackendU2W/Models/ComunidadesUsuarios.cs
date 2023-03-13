@@ -12,17 +12,16 @@ namespace BackendU2W.Models
     //[Index(nameof(id_com), nameof(id_usu), IsUnique = true)]
     public class ComunidadesUsuarios
     {
-
         //[Column(Order = 1)]
         [Key]
         public int id_com_usu { get; set; }
-
 
         //[Key]
         //[Column(Order = 2)]
         [ForeignKey("comunidad")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_com { get; set; }
+
         public Comunidades comunidad { get; set; }
 
         //[Key]
@@ -30,6 +29,7 @@ namespace BackendU2W.Models
         [ForeignKey("usuario")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_usu { get; set; }
+
         public Usuarios usuario { get; set; }
 
         public ICollection<Posts> Posts { get; set; }
@@ -41,7 +41,7 @@ namespace BackendU2W.Models
         [DefaultValue(1)]
         public int nivel { get; set; }
 
-        public string? avatar { get; set; }
+        public Documentos? avatar { get; set; }
 
         public tipo_usuario tipoUsuario { get; set; }
 

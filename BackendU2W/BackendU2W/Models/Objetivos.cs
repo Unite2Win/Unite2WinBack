@@ -15,7 +15,7 @@ namespace BackendU2W.Models
         public string nombre { get; set; }
 
         [DefaultValue("Descripción de la comunidad")]
-        [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 50")]
+        [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 1000")]
         public string? descripcion { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
@@ -33,11 +33,16 @@ namespace BackendU2W.Models
         [DefaultValue(null)]
         public Nullable<DateTime> delete_date { get; set; }
 
+        [DataType(DataType.Date)]
+        [DefaultValue(null)]
+        public Nullable<DateTime> complete_date { get; set; }
+
         //Empieza lo de la FK:
         [ForeignKey("usuario")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_usu { get; set; }
         //Esto de abajo es una referencia a Usuarios
+
         public Usuarios usuario { get; set; }
     }
 

@@ -4,6 +4,7 @@ using BackendU2W.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendU2W.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230313001650_IncontablesCambiosDB")]
+    partial class IncontablesCambiosDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,7 +356,17 @@ namespace BackendU2W.Migrations
 
                     b.HasKey("id_perfil");
 
-                    b.ToTable("Tbl_Perfiles", (string)null);
+                    b.ToTable("Tbl_Usuarios", null, t =>
+                        {
+                            t.Property("create_date")
+                                .HasColumnName("Perfiles_create_date");
+
+                            t.Property("delete_date")
+                                .HasColumnName("Perfiles_delete_date");
+
+                            t.Property("last_modified")
+                                .HasColumnName("Perfiles_last_modified");
+                        });
                 });
 
             modelBuilder.Entity("BackendU2W.Models.Planes", b =>

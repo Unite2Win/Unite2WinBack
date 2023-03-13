@@ -21,11 +21,11 @@ namespace BackendU2W.Models
         [StringLength(50, MinimumLength = 8, ErrorMessage = "Este campo debe tener un mínimo de 8 caractéres y máximo de 50")]
         public string clave { get; set; }
 
-        [Required(ErrorMessage = "Este campo es obligatorio")]
-        public string picture { get; set; }
+        //[Required(ErrorMessage = "Este campo es obligatorio")]
+        public Documentos? picture { get; set; }
 
-        [Required(ErrorMessage = "Este campo es obligatorio")]
-        public string banner { get; set; }
+        //[Required(ErrorMessage = "Este campo es obligatorio")]
+        public Documentos? banner { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [DataType(DataType.Date)]
