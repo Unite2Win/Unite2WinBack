@@ -4,6 +4,7 @@ using BackendU2W.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendU2W.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230326122611_AniadirCampoEmailYUsuAdminDB")]
+    partial class AniadirCampoEmailYUsuAdminDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -531,10 +534,6 @@ namespace BackendU2W.Migrations
                     b.Property<int>("level")
                         .HasColumnType("int");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("nick")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -547,10 +546,6 @@ namespace BackendU2W.Migrations
 
                     b.Property<long?>("pictureid_doc")
                         .HasColumnType("bigint");
-
-                    b.Property<string>("surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id_usu");
 
@@ -566,10 +561,8 @@ namespace BackendU2W.Migrations
                             create_date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario1@gmail.com",
                             level = 0,
-                            name = "Usuario1",
                             nick = "Usuario1",
-                            password = "12345",
-                            surname = "Usuario1"
+                            password = "12345"
                         },
                         new
                         {
@@ -578,10 +571,8 @@ namespace BackendU2W.Migrations
                             create_date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario2@gmail.com",
                             level = 10,
-                            name = "Usuario2",
                             nick = "Usuario2",
-                            password = "12345",
-                            surname = "Usuario2"
+                            password = "12345"
                         },
                         new
                         {
@@ -590,10 +581,8 @@ namespace BackendU2W.Migrations
                             create_date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario3@gmail.com",
                             level = 20,
-                            name = "Usuario3",
                             nick = "Usuario3",
-                            password = "12345",
-                            surname = "Usuario3"
+                            password = "12345"
                         },
                         new
                         {
@@ -603,10 +592,8 @@ namespace BackendU2W.Migrations
                             delete_date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "usuario4@gmail.com",
                             level = 30,
-                            name = "Usuario4",
                             nick = "Usuario4",
-                            password = "12345",
-                            surname = "Usuario4"
+                            password = "12345"
                         },
                         new
                         {
@@ -615,10 +602,8 @@ namespace BackendU2W.Migrations
                             create_date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "admin@gmail.com",
                             level = 999,
-                            name = "Admin",
                             nick = "admin",
-                            password = "admin",
-                            surname = "Admin"
+                            password = "admin"
                         });
                 });
 

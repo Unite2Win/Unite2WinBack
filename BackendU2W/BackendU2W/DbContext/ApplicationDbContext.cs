@@ -22,12 +22,13 @@ namespace BackendU2W.DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var usuario1 = new Usuarios() { id_usu = 1, nick = "Usuario1", password = "12345", active = true, create_date = DateTime.Today };
-            var usuario2 = new Usuarios() { id_usu = 2, nick = "Usuario2", password = "12345", level = 10, create_date = DateTime.Today };
-            var usuario3 = new Usuarios() { id_usu = 3, nick = "Usuario3", password = "12345", level = 20, active = false, create_date = DateTime.Today };
-            var usuario4 = new Usuarios() { id_usu = 4, nick = "Usuario4", password = "12345", level = 30, active = true, create_date = DateTime.Today, delete_date = new DateTime(2023, 01, 23) };
+            var usuario1 = new Usuarios() { id_usu = 1, nick = "Usuario1", name = "Usuario1", surname = "Usuario1", email = "usuario1@gmail.com", password = "12345", active = true, create_date = DateTime.Today };
+            var usuario2 = new Usuarios() { id_usu = 2, nick = "Usuario2", name = "Usuario2", surname = "Usuario2", email = "usuario2@gmail.com", password = "12345", level = 10, create_date = DateTime.Today };
+            var usuario3 = new Usuarios() { id_usu = 3, nick = "Usuario3", name = "Usuario3", surname = "Usuario3", email = "usuario3@gmail.com", password = "12345", level = 20, active = false, create_date = DateTime.Today };
+            var usuario4 = new Usuarios() { id_usu = 4, nick = "Usuario4", name = "Usuario4", surname = "Usuario4", email = "usuario4@gmail.com", password = "12345", level = 30, active = true, create_date = DateTime.Today, delete_date = new DateTime(2023, 01, 23) };
+            var usuarioAdmin = new Usuarios() { id_usu = 5, nick = "admin", name = "Admin", surname = "Admin", email = "admin@gmail.com", password = "admin", level = 999, active = true, create_date = DateTime.Today };
 
-            modelBuilder.Entity<Usuarios>().HasData(new Usuarios[] { usuario1, usuario2, usuario3, usuario4 });
+            modelBuilder.Entity<Usuarios>().HasData(new Usuarios[] { usuario1, usuario2, usuario3, usuario4, usuarioAdmin });
 
             var objetivo1 = new Objetivos() { id_obj = 1, id_usu = 1, nombre = "Objetivo1", descripcion = "Este es el objetivo1", duracion = DuracionObjetivos.Dia, create_date = DateTime.Today };
             var objetivo2 = new Objetivos() { id_obj = 2, id_usu = 1, nombre = "Objetivo2", duracion = DuracionObjetivos.Semana, create_date = DateTime.Today };

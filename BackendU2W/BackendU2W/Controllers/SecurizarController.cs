@@ -34,6 +34,11 @@ namespace APIReservas.Controllers
                 {
                     var userCompleto = await _context.Usuarios.FirstOrDefaultAsync(u => u.nick == _userData.nick && u.password == _userData.password);
 
+                    userCompleto.last_login = DateTime.Now;
+
+                    _context.Entry(userCompleto).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+
                     var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),

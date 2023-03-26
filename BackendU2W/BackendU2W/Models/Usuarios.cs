@@ -19,6 +19,15 @@ namespace BackendU2W.Models
         [StringLength(50, MinimumLength = 8, ErrorMessage = "Este campo debe tener un mínimo de 8 caractéres y máximo de 50")]
         public string password { get; set; }
 
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public string? name { get; set; }
+
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public string? surname { get; set; }
+
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public string email { get; set; }
+
         //[Required(ErrorMessage = "Este campo es obligatorio")]
         //public byte[] picture { get; set; }
         public Documentos? picture { get; set; }
