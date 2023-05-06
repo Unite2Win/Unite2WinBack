@@ -43,7 +43,7 @@ namespace BackendU2W.Models
         public int id_usu { get; set; }
         //Esto de abajo es una referencia a Usuarios
 
-        public Usuarios usuario { get; set; }
+        public Usuarios? usuario { get; set; }
     }
 
     public enum DuracionObjetivos

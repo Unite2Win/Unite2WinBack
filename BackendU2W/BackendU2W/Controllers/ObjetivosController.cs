@@ -41,8 +41,8 @@ namespace BackendU2W.Controllers
             => await _contexto.Objetivos.Where(objetivo => objetivo.id_usu == id && objetivo.delete_date == null).ToListAsync();
 
         // POST api/<ObjetivosController>
-        [HttpPost]
-        public async Task<IActionResult> Post(Objetivos objetivo)
+        [HttpPost("API/post")]
+            public async Task<IActionResult> Post([FromBody]Objetivos objetivo)
         {
             objetivo.create_date = DateTime.Now;
             await _contexto.Objetivos.AddAsync(objetivo);
@@ -68,10 +68,10 @@ namespace BackendU2W.Controllers
         }
 
         // PUT api/<ObjetivosController>/5/delete
-        [HttpPut("{id}/delete")]
+        [HttpPut("delete")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete([FromBody]int id)
         {
             var objetivoToDelete = await _contexto.Objetivos.FindAsync(id);
 
