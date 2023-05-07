@@ -30,10 +30,10 @@ namespace BackendU2W.DbContext
 
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios[] { usuario1, usuario2, usuario3, usuario4, usuarioAdmin });
 
-            var objetivo1 = new Objetivos() { id_obj = 1, id_usu = 1, nombre = "Objetivo1", descripcion = "Este es el objetivo1", duracion = DuracionObjetivos.Dia, create_date = DateTime.Today };
-            var objetivo2 = new Objetivos() { id_obj = 2, id_usu = 1, nombre = "Objetivo2", duracion = DuracionObjetivos.Semana, create_date = DateTime.Today };
-            var objetivo3 = new Objetivos() { id_obj = 3, id_usu = 3, nombre = "Objetivo3", duracion = DuracionObjetivos.Semana, create_date = DateTime.Today };
-            var objetivo4 = new Objetivos() { id_obj = 4, id_usu = 4, nombre = "Objetivo4", duracion = DuracionObjetivos.Mes, create_date = DateTime.Today };
+            var objetivo1 = new Objetivos() { id_obj = 1, id_usu = 1, nombre = "Objetivo1", descripcion = "Este es el objetivo1", duracion = 1, create_date = DateTime.Today };
+            var objetivo2 = new Objetivos() { id_obj = 2, id_usu = 1, nombre = "Objetivo2", duracion = 1, create_date = DateTime.Today };
+            var objetivo3 = new Objetivos() { id_obj = 3, id_usu = 3, nombre = "Objetivo3", duracion = 2, create_date = DateTime.Today };
+            var objetivo4 = new Objetivos() { id_obj = 4, id_usu = 4, nombre = "Objetivo4", duracion = 3, create_date = DateTime.Today };
 
             modelBuilder.Entity<Objetivos>().HasData(new Objetivos[] { objetivo1, objetivo2, objetivo3, objetivo4 });
 

@@ -30,7 +30,8 @@ namespace BackendU2W.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
-            var usuario = await _contexto.Usuarios.FindAsync(id);
+            List<Usuarios> usuarios = _contexto.Usuarios.Include(usuario => usuario.picture).ToList();
+            var usuario = usuarios.Find(usuario => usuario.id_usu == id);
             return usuario == null || usuario.delete_date != null ? NotFound() : Ok(usuario);
         }
 
