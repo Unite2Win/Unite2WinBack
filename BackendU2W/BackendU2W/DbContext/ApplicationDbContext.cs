@@ -11,6 +11,7 @@ namespace BackendU2W.DbContext
 
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Objetivos> Objetivos { get; set; }
+        //public DbSet<ObjetivoPost> ObjetivoPost { get; set; }
         public DbSet<Planes> Planes { get; set; }
         public DbSet<Comunidades> Comunidades { get; set; }
         public DbSet<ComunidadesUsuarios> ComunidadesUsuarios { get; set; }
