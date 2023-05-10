@@ -32,6 +32,27 @@ namespace BackendU2W.Controllers
             return comunidad == null || comunidad.delete_date != null ? NotFound() : Ok(comunidad);
         }
 
+        //PAGINADO
+        [HttpGet("/api/comunidades/count")]
+        public IActionResult GetCount()
+        {
+            return Ok(_contexto.Comunidades.Where(comunidad => comunidad.delete_date == null).Count());
+        }
+
+        [HttpGet("/api/comunidades/paginado/{pagina}/{pageSize}")]
+        public IActionResult GetPaginado([FromRoute] int pagina, [FromRoute] int pageSize)
+        {
+            List<Comunidades> idiomas = (_contexto.Comunidades
+                .Where(r => r.delete_date == null)
+                .Skip(pagina * pageSize)
+                .Include(r => r.picture)
+                .Include(r => r.banner)
+                .Take(pageSize)
+                .ToList());
+
+            return Ok(idiomas);
+        }
+
         //[HttpGet("usuariosComunidad/{id}")]
         //[ProducesResponseType(typeof(ComunidadesUsuarios), StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status404NotFound)]
