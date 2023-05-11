@@ -55,7 +55,7 @@ namespace BackendU2W.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Put(int id, Objetivos objetivo)
+        public async Task<IActionResult> Put( int id, [FromBody] Objetivos objetivo)
         {
             if (id != objetivo.id_obj) return BadRequest();
 
