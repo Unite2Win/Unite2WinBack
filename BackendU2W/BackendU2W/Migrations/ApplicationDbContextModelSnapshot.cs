@@ -71,7 +71,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com = 1,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Esta es al comunidad1",
                             nombre = "Comunidad1"
                         },
@@ -79,7 +79,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com = 2,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Esta es al comunidad2",
                             nombre = "Comunidad2"
                         },
@@ -87,14 +87,14 @@ namespace BackendU2W.Migrations
                         {
                             id_com = 3,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             nombre = "Comunidad3"
                         },
                         new
                         {
                             id_com = 4,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Esta es al comunidad4",
                             nombre = "Comunidad4"
                         });
@@ -153,7 +153,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 1,
                             apodo = "Plan2",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 2,
                             id_usu = 1,
                             nivel = 10,
@@ -163,7 +163,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 2,
                             apodo = "Plan1",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 3,
                             id_usu = 2,
                             nivel = 0,
@@ -173,7 +173,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 3,
                             apodo = "Plan3",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 2,
                             id_usu = 2,
                             nivel = 30,
@@ -183,7 +183,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 4,
                             apodo = "Plan4",
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 1,
                             id_usu = 3,
                             nivel = 0,
@@ -210,12 +210,10 @@ namespace BackendU2W.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("descripcion")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("extensionArchivo")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("last_modified")
                         .HasColumnType("datetime2");
@@ -228,27 +226,27 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_doc = 1L,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 },
                             descripcion = "Descripcion del documento1"
                         },
                         new
                         {
                             id_doc = 2L,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 }
                         },
                         new
                         {
                             id_doc = 3L,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 },
                             descripcion = "Descripcion del documento3"
                         },
                         new
                         {
                             id_doc = 4L,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 },
                             descripcion = "Descripcion del documento4"
                         });
@@ -299,7 +297,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 1,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el objetivo1",
                             duracion = 0,
                             id_usu = 1,
@@ -308,7 +306,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 2,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             duracion = 0,
                             id_usu = 1,
                             nombre = "Objetivo2"
@@ -316,7 +314,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 3,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             duracion = 1,
                             id_usu = 3,
                             nombre = "Objetivo3"
@@ -324,7 +322,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 4,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             duracion = 2,
                             id_usu = 4,
                             nombre = "Objetivo4"
@@ -398,7 +396,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_plan = 1,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el plan1",
                             duracion = 1,
                             id_com = 3,
@@ -407,7 +405,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_plan = 2,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el plan2",
                             duracion = 1,
                             id_com = 2,
@@ -416,7 +414,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_plan = 3,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             duracion = 0,
                             id_com = 2,
                             nombre = "Plan3"
@@ -424,7 +422,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_plan = 4,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el plan4",
                             duracion = 2,
                             id_com = 1,
@@ -471,7 +469,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_post = 1,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Descripcion del post1",
                             id_com_usu = 2,
                             titulo = "Plan2"
@@ -479,14 +477,14 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_post = 2,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com_usu = 3,
                             titulo = "Plan1"
                         },
                         new
                         {
                             id_post = 3,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Descripcion del post3",
                             id_com_usu = 2,
                             titulo = "Plan3"
@@ -494,7 +492,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_post = 4,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Descripcion del post4",
                             id_com_usu = 1,
                             titulo = "Plan4"
@@ -528,7 +526,7 @@ namespace BackendU2W.Migrations
                     b.Property<DateTime?>("last_modified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("level")
+                    b.Property<int?>("level")
                         .HasColumnType("int");
 
                     b.Property<string>("name")
@@ -563,9 +561,8 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 1,
                             active = true,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario1@gmail.com",
-                            level = 0,
                             name = "Usuario1",
                             nick = "Usuario1",
                             password = "12345",
@@ -575,7 +572,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 2,
                             active = false,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario2@gmail.com",
                             level = 10,
                             name = "Usuario2",
@@ -587,7 +584,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 3,
                             active = false,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario3@gmail.com",
                             level = 20,
                             name = "Usuario3",
@@ -599,7 +596,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 4,
                             active = true,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             delete_date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "usuario4@gmail.com",
                             level = 30,
@@ -612,7 +609,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 5,
                             active = true,
-                            create_date = new DateTime(2023, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "admin@gmail.com",
                             level = 999,
                             name = "Admin",
