@@ -15,14 +15,11 @@ namespace BackendU2W.Models
         [Key]
         public long id_doc { get; set; }
 
-        [Required(ErrorMessage = "Este campo es obligatorio")]
         public byte[] data { get; set; }
 
         [DefaultValue("Descripción del documento")]
-        [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 1000")]
         public string? descripcion { get; set; }
 
-        [StringLength(20, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 20")]
         public string? extensionArchivo { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
