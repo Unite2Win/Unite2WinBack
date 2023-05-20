@@ -28,6 +28,8 @@ namespace BackendU2W.Models
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public string email { get; set; }
 
+        [ForeignKey("picture")]
+        public long? pictureid_doc { get; set; }
         //[Required(ErrorMessage = "Este campo es obligatorio")]
         //public byte[] picture { get; set; }
         public Documentos? picture { get; set; }
@@ -35,7 +37,7 @@ namespace BackendU2W.Models
         [DefaultValue(1)]
         //[Range(100, Int32.MaxValue)]
         //[Range(Int32.MinValue, 10)]
-        public int level { get; set; }
+        public int? level { get; set; }
 
         [DefaultValue("True")]
         public Boolean active { get; set; }
