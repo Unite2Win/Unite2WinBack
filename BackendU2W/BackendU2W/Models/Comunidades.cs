@@ -40,8 +40,8 @@ namespace BackendU2W.Models
         public Nullable<DateTime> delete_date { get; set; }
 
         //Esto de abajo es una referencia a Objetivos (Un usuario muchos objetivos)
-        public List<Planes> Planes { get; set; }
+        public List<Planes>? Planes { get; set; }
 
-        public ICollection<ComunidadesUsuarios> ComunidadesUsuarios { get; set; }
+        public ICollection<ComunidadesUsuarios>? ComunidadesUsuarios { get; set; }
     }
 }
