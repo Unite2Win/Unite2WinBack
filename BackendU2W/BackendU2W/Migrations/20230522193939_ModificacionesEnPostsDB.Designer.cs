@@ -4,6 +4,7 @@ using BackendU2W.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendU2W.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230522193939_ModificacionesEnPostsDB")]
+    partial class ModificacionesEnPostsDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +74,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com = 1,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Esta es al comunidad1",
                             nombre = "Comunidad1"
                         },
@@ -79,7 +82,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com = 2,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Esta es al comunidad2",
                             nombre = "Comunidad2"
                         },
@@ -87,14 +90,14 @@ namespace BackendU2W.Migrations
                         {
                             id_com = 3,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             nombre = "Comunidad3"
                         },
                         new
                         {
                             id_com = 4,
                             clave = "12345",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Esta es al comunidad4",
                             nombre = "Comunidad4"
                         });
@@ -153,7 +156,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 1,
                             apodo = "Plan2",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 2,
                             id_usu = 1,
                             nivel = 10,
@@ -163,7 +166,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 2,
                             apodo = "Plan1",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 3,
                             id_usu = 2,
                             nivel = 0,
@@ -173,7 +176,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 3,
                             apodo = "Plan3",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 2,
                             id_usu = 2,
                             nivel = 30,
@@ -183,7 +186,7 @@ namespace BackendU2W.Migrations
                         {
                             id_com_usu = 4,
                             apodo = "Plan4",
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com = 1,
                             id_usu = 3,
                             nivel = 0,
@@ -226,27 +229,27 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_doc = 1L,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 },
                             descripcion = "Descripcion del documento1"
                         },
                         new
                         {
                             id_doc = 2L,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 }
                         },
                         new
                         {
                             id_doc = 3L,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 },
                             descripcion = "Descripcion del documento3"
                         },
                         new
                         {
                             id_doc = 4L,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             data = new byte[] { 0 },
                             descripcion = "Descripcion del documento4"
                         });
@@ -306,39 +309,39 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_evento = 1,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el evento 1",
-                            fechaFin = new DateTime(2023, 6, 23, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4856),
-                            fechaInicio = new DateTime(2023, 5, 23, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4854),
+                            fechaFin = new DateTime(2023, 6, 22, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8938),
+                            fechaInicio = new DateTime(2023, 5, 22, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8935),
                             id_com = 3,
                             titulo = "Evento1"
                         },
                         new
                         {
                             id_evento = 2,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el evento 2",
-                            fechaFin = new DateTime(2023, 6, 7, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4862),
-                            fechaInicio = new DateTime(2023, 5, 23, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4860),
+                            fechaFin = new DateTime(2023, 6, 6, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8944),
+                            fechaInicio = new DateTime(2023, 5, 22, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8943),
                             id_com = 2,
                             titulo = "Evento2"
                         },
                         new
                         {
                             id_evento = 3,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
-                            fechaFin = new DateTime(2024, 5, 23, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4868),
-                            fechaInicio = new DateTime(2023, 5, 23, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4867),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
+                            fechaFin = new DateTime(2024, 5, 22, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8950),
+                            fechaInicio = new DateTime(2023, 5, 22, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8948),
                             id_com = 2,
                             titulo = "Evento3"
                         },
                         new
                         {
                             id_evento = 4,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el evento 4",
-                            fechaFin = new DateTime(2023, 5, 28, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4899),
-                            fechaInicio = new DateTime(2023, 5, 23, 1, 8, 38, 528, DateTimeKind.Local).AddTicks(4897),
+                            fechaFin = new DateTime(2023, 5, 27, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8956),
+                            fechaInicio = new DateTime(2023, 5, 22, 21, 39, 39, 461, DateTimeKind.Local).AddTicks(8955),
                             id_com = 1,
                             titulo = "Evento4"
                         });
@@ -389,7 +392,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 1,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Este es el objetivo1",
                             duracion = 0,
                             id_usu = 1,
@@ -398,7 +401,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 2,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             duracion = 0,
                             id_usu = 1,
                             nombre = "Objetivo2"
@@ -406,7 +409,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 3,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             duracion = 1,
                             id_usu = 3,
                             nombre = "Objetivo3"
@@ -414,7 +417,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_obj = 4,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             duracion = 2,
                             id_usu = 4,
                             nombre = "Objetivo4"
@@ -493,7 +496,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_post = 1,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Descripcion del post 1",
                             id_com_usu = 2,
                             likes = 1L,
@@ -502,7 +505,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_post = 2,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             id_com_usu = 3,
                             likes = 1L,
                             titulo = "Post 2"
@@ -510,7 +513,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_post = 3,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Descripcion del post 3",
                             id_com_usu = 2,
                             likes = 1L,
@@ -519,7 +522,7 @@ namespace BackendU2W.Migrations
                         new
                         {
                             id_post = 4,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             descripcion = "Descripcion del post 4",
                             id_com_usu = 1,
                             likes = 1L,
@@ -589,7 +592,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 1,
                             active = true,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario1@gmail.com",
                             name = "Usuario1",
                             nick = "Usuario1",
@@ -600,7 +603,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 2,
                             active = false,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario2@gmail.com",
                             level = 10,
                             name = "Usuario2",
@@ -612,7 +615,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 3,
                             active = false,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "usuario3@gmail.com",
                             level = 20,
                             name = "Usuario3",
@@ -624,7 +627,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 4,
                             active = true,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             delete_date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "usuario4@gmail.com",
                             level = 30,
@@ -637,7 +640,7 @@ namespace BackendU2W.Migrations
                         {
                             id_usu = 5,
                             active = true,
-                            create_date = new DateTime(2023, 5, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            create_date = new DateTime(2023, 5, 22, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "admin@gmail.com",
                             level = 999,
                             name = "Admin",

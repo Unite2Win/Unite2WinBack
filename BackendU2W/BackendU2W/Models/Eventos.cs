@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackendU2W.Models
 {
-    [Table("Tbl_Planes")]
-    public class Planes
+    [Table("Tbl_Eventos")]
+    public class Eventos
     {
         [Key]
-        public int id_plan { get; set; }
+        public int id_evento { get; set; }
 
         [ForeignKey("comunidad")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
@@ -19,14 +19,23 @@ namespace BackendU2W.Models
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [MaxLength(50, ErrorMessage = "Este campo debe tener un máximo de 50")]
-        public string nombre { get; set; }
+        public string titulo { get; set; }
 
         [DefaultValue("Descripción del plan")]
-        [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 50")]
+        [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 1000")]
         public string? descripcion { get; set; }
 
+        [DefaultValue("Descripción del plan")]
+        [StringLength(1000, MinimumLength = 1, ErrorMessage = "Este campo debe tener un máximo de 1000")]
+        public string? ubicacion { get; set; }
+
         [Required(ErrorMessage = "Este campo es obligatorio")]
-        public DuracionPlanes duracion { get; set; }
+        public DateTime fechaInicio { get; set; }
+
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public DateTime fechaFin { get; set; }
+
+        public Documentos? Imagen { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [DataType(DataType.Date)]
@@ -40,10 +49,4 @@ namespace BackendU2W.Models
         [DefaultValue(null)]
         public Nullable<DateTime> delete_date { get; set; }
     }
-
-    public enum DuracionPlanes
-    {
-        Dia, Semana, Mes
-    }
-
 }

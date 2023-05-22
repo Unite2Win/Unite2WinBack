@@ -12,7 +12,7 @@ namespace BackendU2W.DbContext
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Objetivos> Objetivos { get; set; }
         //public DbSet<ObjetivoPost> ObjetivoPost { get; set; }
-        public DbSet<Planes> Planes { get; set; }
+        public DbSet<Eventos> Eventos { get; set; }
         public DbSet<Comunidades> Comunidades { get; set; }
         public DbSet<ComunidadesUsuarios> ComunidadesUsuarios { get; set; }
         public DbSet<Posts> Posts { get; set; }
@@ -45,12 +45,12 @@ namespace BackendU2W.DbContext
 
             modelBuilder.Entity<Comunidades>().HasData(new Comunidades[] { comunidad1, comunidad2, comunidad3, comunidad4 });
 
-            var plan2 = new Planes() { id_plan = 2, id_com = 2, nombre = "Plan2", descripcion = "Este es el plan2", duracion = DuracionPlanes.Semana, create_date = DateTime.Today };
-            var plan1 = new Planes() { id_plan = 1, id_com = 3, nombre = "Plan1", descripcion = "Este es el plan1", duracion = DuracionPlanes.Semana, create_date = DateTime.Today };
-            var plan3 = new Planes() { id_plan = 3, id_com = 2, nombre = "Plan3", create_date = DateTime.Today };
-            var plan4 = new Planes() { id_plan = 4, id_com = 1, nombre = "Plan4", descripcion = "Este es el plan4", duracion = DuracionPlanes.Mes, create_date = DateTime.Today };
+            var plan1 = new Eventos() { id_evento = 1, id_com = 3, titulo = "Evento1", descripcion = "Este es el evento 1", fechaInicio = DateTime.Now, fechaFin = DateTime.Now.AddMonths(1), create_date = DateTime.Today };
+            var plan2 = new Eventos() { id_evento = 2, id_com = 2, titulo = "Evento2", descripcion = "Este es el evento 2", fechaInicio = DateTime.Now, fechaFin = DateTime.Now.AddDays(15), create_date = DateTime.Today };
+            var plan3 = new Eventos() { id_evento = 3, id_com = 2, titulo = "Evento3", fechaInicio = DateTime.Now, fechaFin = DateTime.Now.AddMonths(12), create_date = DateTime.Today };
+            var plan4 = new Eventos() { id_evento = 4, id_com = 1, titulo = "Evento4", descripcion = "Este es el evento 4", fechaInicio = DateTime.Now, fechaFin = DateTime.Now.AddDays(5), create_date = DateTime.Today };
 
-            modelBuilder.Entity<Planes>().HasData(new Planes[] { plan1, plan2, plan3, plan4 });
+            modelBuilder.Entity<Eventos>().HasData(new Eventos[] { plan1, plan2, plan3, plan4 });
 
             var comunidades_usuarios1 = new ComunidadesUsuarios() { id_com_usu = 1, id_com = 2, id_usu = 1, apodo = "Plan2", nivel = 10, tipoUsuario = tipo_usuario.Admin, create_date = DateTime.Today };
             var comunidades_usuarios2 = new ComunidadesUsuarios() { id_com_usu = 2, id_com = 3, id_usu = 2, apodo = "Plan1", tipoUsuario = tipo_usuario.Mod, create_date = DateTime.Today };
@@ -59,10 +59,10 @@ namespace BackendU2W.DbContext
 
             modelBuilder.Entity<ComunidadesUsuarios>().HasData(new ComunidadesUsuarios[] { comunidades_usuarios1, comunidades_usuarios2, comunidades_usuarios3, comunidades_usuarios4 });
 
-            var post1 = new Posts() { id_post = 1, id_com_usu = 2, titulo = "Plan2", descripcion = "Descripcion del post1", create_date = DateTime.Today };
-            var post2 = new Posts() { id_post = 2, id_com_usu = 3, titulo = "Plan1", create_date = DateTime.Today };
-            var post3 = new Posts() { id_post = 3, id_com_usu = 2, titulo = "Plan3", descripcion = "Descripcion del post3", create_date = DateTime.Today };
-            var post4 = new Posts() { id_post = 4, id_com_usu = 1, titulo = "Plan4", descripcion = "Descripcion del post4", create_date = DateTime.Today };
+            var post1 = new Posts() { id_post = 1, id_com_usu = 2, titulo = "Post 1", descripcion = "Descripcion del post 1", likes = 1, create_date = DateTime.Today };
+            var post2 = new Posts() { id_post = 2, id_com_usu = 3, titulo = "Post 2", likes = 1, create_date = DateTime.Today };
+            var post3 = new Posts() { id_post = 3, id_com_usu = 2, titulo = "Post 3", descripcion = "Descripcion del post 3", likes = 1, create_date = DateTime.Today };
+            var post4 = new Posts() { id_post = 4, id_com_usu = 1, titulo = "Post 4", descripcion = "Descripcion del post 4", likes = 1, create_date = DateTime.Today };
 
             modelBuilder.Entity<Posts>().HasData(new Posts[] { post1, post2, post3, post4 });
 

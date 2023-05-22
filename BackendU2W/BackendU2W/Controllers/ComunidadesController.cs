@@ -28,8 +28,12 @@ namespace BackendU2W.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
-            var comunidad = await _contexto.Comunidades.FindAsync(id);
-            return comunidad == null || comunidad.delete_date != null ? NotFound() : Ok(comunidad);
+            List<Comunidades> comunidades = (_contexto.Comunidades
+                .Where(r => r.delete_date == null && r.id_com == id)
+                .Include(r => r.picture)
+                .Include(r => r.banner)
+                .ToList());
+            return comunidades[0] == null || comunidades[0].delete_date != null ? NotFound() : Ok(comunidades[0]);
         }
 
         //PAGINADO
@@ -83,7 +87,7 @@ namespace BackendU2W.Controllers
             _contexto.Entry(comunidad).State = EntityState.Modified;
             await _contexto.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(comunidad);
         }
 
         // DELETE api/<ComunidadesController>/5

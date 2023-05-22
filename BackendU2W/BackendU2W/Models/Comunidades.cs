@@ -22,9 +22,13 @@ namespace BackendU2W.Models
         public string clave { get; set; }
 
         //[Required(ErrorMessage = "Este campo es obligatorio")]
+        [ForeignKey("picture")]
+        public long? pictureid_doc { get; set; }
         public Documentos? picture { get; set; }
 
         //[Required(ErrorMessage = "Este campo es obligatorio")]
+        [ForeignKey("banner")]
+        public long? bannerid_doc { get; set; }
         public Documentos? banner { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
@@ -40,7 +44,7 @@ namespace BackendU2W.Models
         public Nullable<DateTime> delete_date { get; set; }
 
         //Esto de abajo es una referencia a Objetivos (Un usuario muchos objetivos)
-        public List<Planes>? Planes { get; set; }
+        public List<Eventos>? Eventos { get; set; }
 
         public ICollection<ComunidadesUsuarios>? ComunidadesUsuarios { get; set; }
     }

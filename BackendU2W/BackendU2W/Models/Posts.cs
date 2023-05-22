@@ -23,6 +23,14 @@ namespace BackendU2W.Models
         [StringLength(500, MinimumLength = 1, ErrorMessage = "Este campo debe tener un mínimo de 1 caractéres y máximo de 50")]
         public string? descripcion { get; set; }
 
+        [ForeignKey("imagen")]
+        public long? imagenid_doc { get; set; }
+        public Documentos? imagen { get; set; }
+
+        //ESTO ESTARIA BIEN HACERLO EN UNA TABLA DONDE GUARDAMOS CADA LIKE CON EL USUARIO... ¿Dará tiempo? :0
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public long likes { get; set; }
+
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [DataType(DataType.Date)]
         public DateTime create_date { get; set; }
