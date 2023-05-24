@@ -31,6 +31,9 @@ namespace BackendU2W.Models
         public long? bannerid_doc { get; set; }
         public Documentos? banner { get; set; }
 
+        public bool? isPublica { get; set; }
+        public bool? isVisible { get; set; }
+
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [DataType(DataType.Date)]
         public DateTime create_date { get; set; }

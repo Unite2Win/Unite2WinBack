@@ -32,6 +32,20 @@ namespace BackendU2W.Controllers
             return post == null || post.delete_date != null ? NotFound() : Ok(post);
         }
 
+        //[HttpGet("/api/posts/paginado/{pagina}/{pageSize}")]
+        //public IActionResult GetPaginado([FromRoute] int pagina, [FromRoute] int pageSize)
+        //{
+        //    List<Comunidades> idiomas = (_contexto.Comunidades
+        //        .Where(r => r.delete_date == null)
+        //        .Skip(pagina * pageSize)
+        //        .Include(r => r.picture)
+        //        .Include(r => r.banner)
+        //        .Take(pageSize)
+        //        .ToList());
+
+        //    return Ok(idiomas);
+        //}
+
         // GET api/<ObjetivosController>/comunidadUsuariosId/5
         [HttpGet("{id}/comunidadUsuariosId")]
         [ProducesResponseType(typeof(Posts), StatusCodes.Status200OK)]
