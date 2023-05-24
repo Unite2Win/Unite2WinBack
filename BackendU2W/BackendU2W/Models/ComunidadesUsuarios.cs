@@ -22,7 +22,7 @@ namespace BackendU2W.Models
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_com { get; set; }
 
-        public Comunidades comunidad { get; set; }
+        public Comunidades? comunidad { get; set; }
 
         //[Key]
         //[Column(Order = 3)]
@@ -30,9 +30,9 @@ namespace BackendU2W.Models
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_usu { get; set; }
 
-        public Usuarios usuario { get; set; }
+        public Usuarios? usuario { get; set; }
 
-        public ICollection<Posts> Posts { get; set; }
+        public ICollection<Posts>? Posts { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [MaxLength(50, ErrorMessage = "Este campo debe tener un máximo de 50")]

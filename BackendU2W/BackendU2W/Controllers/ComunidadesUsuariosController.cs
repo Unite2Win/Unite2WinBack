@@ -20,7 +20,7 @@ namespace BackendU2W.Controllers
         }
 
         // GET: api/<ComunidadesController>
-        [HttpGet]
+        [HttpGet()]
         public async Task<IEnumerable<ComunidadesUsuarios>> Get()
             => await _contexto.ComunidadesUsuarios.Where(comunidadUsuarios => comunidadUsuarios.delete_date == null).ToListAsync();
 
@@ -35,7 +35,7 @@ namespace BackendU2W.Controllers
         }
 
         // GET api/<ComunidadesController>/5
-        [HttpGet("usuario/{id}")]
+        [HttpGet("comunidadUsuario/usuario/{id}")]
         [ProducesResponseType(typeof(ComunidadesUsuarios), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IEnumerable<ComunidadesUsuarios>> GetByIdUsuario(int id)
@@ -45,13 +45,42 @@ namespace BackendU2W.Controllers
         }
 
         // GET api/<ComunidadesController>/5
-        [HttpGet("comunidad/{id}")]
+        [HttpGet("comunidadUsuario/comunidad/{id}")]
         [ProducesResponseType(typeof(ComunidadesUsuarios), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IEnumerable<ComunidadesUsuarios>> GetByIdComunidad(int id)
         {
             int id_com = id;
-            return await _contexto.ComunidadesUsuarios.Where(comunidadUsuarios => comunidadUsuarios.delete_date == null && comunidadUsuarios.id_com == id_com).ToListAsync(); 
+            return await _contexto.ComunidadesUsuarios.Where(comunidadUsuarios => comunidadUsuarios.delete_date == null && comunidadUsuarios.id_com == id_com).ToListAsync();
+        }
+
+        //PAGINADO
+        [HttpGet("/api/comunidadUsuario/count/comunidad/{comunidadId}")]
+        public IActionResult GetCountByComunidad(int comunidadId)
+        {
+            return Ok(_contexto.ComunidadesUsuarios.Where(comunidadusuario => comunidadusuario.delete_date == null && comunidadusuario.id_com == comunidadId).Count());
+        }
+
+        [HttpGet("/api/comunidadUsuario/count/ismiembro/{comunidadId}/{usuarioId}")]
+        public IActionResult GetIsMiembro(int comunidadId, int usuarioId)
+        {
+            var comunidadUsuario = _contexto.ComunidadesUsuarios.Where(comunidadusuario => comunidadusuario.delete_date == null && comunidadusuario.id_com == comunidadId && comunidadusuario.id_usu == usuarioId).FirstOrDefault();
+            if (comunidadUsuario == null)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
+        }
+
+        [HttpGet("/api/comunidadUsuario/{comunidadId}/{usuarioId}")]
+        public IActionResult GetByComunidadYUsuario(int comunidadId, int usuarioId)
+        {
+            var comunidadUsuario = _contexto.ComunidadesUsuarios.Where(comunidadusuario => comunidadusuario.delete_date == null && comunidadusuario.id_com == comunidadId && comunidadusuario.id_usu == usuarioId).FirstOrDefault();
+            if (comunidadUsuario == null) return NotFound();
+            else return Ok(comunidadUsuario);
         }
 
         // POST api/<ComunidadesController>
@@ -88,7 +117,7 @@ namespace BackendU2W.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var comunidadUsuariosToDelete = await _contexto.ComunidadesUsuarios.FindAsync(id);
-            
+
             if (comunidadUsuariosToDelete == null) return NotFound();
 
             comunidadUsuariosToDelete.delete_date = DateTime.Now;

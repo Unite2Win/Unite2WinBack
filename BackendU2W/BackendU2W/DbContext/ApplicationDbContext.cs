@@ -80,7 +80,7 @@ namespace BackendU2W.DbContext
 
             //modelBuilder.Entity<Perfiles>().HasData(new Perfiles[] { perfil1, perfil2, perfil3, perfil4 });
 
-            modelBuilder.Entity<ComunidadesUsuarios>().HasAlternateKey(c => new { c.id_com, c.id_usu }).HasName("IX_UniqueFKs");
+            //modelBuilder.Entity<ComunidadesUsuarios>().HasAlternateKey(c => new { c.id_com, c.id_usu }).HasName("IX_UniqueFKs");
 
             modelBuilder.Entity<Usuarios>()
                 .HasMany(e => e.ComunidadesUsuarios)
