@@ -35,6 +35,24 @@ namespace BackendU2W.Controllers
             return usuario == null || usuario.delete_date != null ? NotFound() : Ok(usuario);
         }
 
+        [HttpPost("usuarios/getbyid/array")]
+        public async Task<IActionResult> GetByIdArray([FromBody] int[] listaIds)
+        {
+            List<Usuarios> usuarios = new List<Usuarios>();
+            foreach (int id in listaIds)
+            {
+                List<Usuarios> usuariosAux = await _contexto.Usuarios.Include(usuario => usuario.picture).Where(u => u.id_usu == id).ToListAsync();
+                var usuario = usuariosAux.Find(usuario => usuario.id_usu == id);
+                if (usuario != null)
+                    usuarios.Add(usuario);
+            }
+
+            if (usuarios.Count <= 0)
+                return NotFound();
+            else
+                return Ok(usuarios);
+        }
+
         //[HttpGet("comunidadesUsuario/{id}")]
         //[ProducesResponseType(typeof(ComunidadesUsuarios), StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status404NotFound)]
