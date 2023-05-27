@@ -44,6 +44,37 @@ namespace BackendU2W.Controllers
             return await _contexto.ComunidadesUsuarios.Where(comunidadUsuarios => comunidadUsuarios.delete_date == null && comunidadUsuarios.id_usu == id_usu).ToListAsync();
         }
 
+        //PAGINADO
+        [HttpGet("/api/comunidadUsuario/count/{idUsu}")]
+        public IActionResult GetCount([FromRoute] int idUsu)
+        {
+            return Ok(_contexto.ComunidadesUsuarios.Where(comunidadUsuarios => comunidadUsuarios.delete_date == null && comunidadUsuarios.id_usu == idUsu).Count());
+        }
+
+        [HttpGet("/api/comunidadUsuario/paginado/{pagina}/{pageSize}/{idUsu}")]
+        public IActionResult GetPaginado([FromRoute] int pagina, [FromRoute] int pageSize, [FromRoute] int idUsu)
+        {
+            List<ComunidadesUsuarios> comunidadesUsuario = (_contexto.ComunidadesUsuarios
+                .Where(r => r.delete_date == null && r.id_usu == idUsu)
+                .Skip(pagina * pageSize)
+                .Take(pageSize)
+                .ToList());
+
+            return Ok(comunidadesUsuario);
+        }
+
+        [HttpGet("/api/comunidadUsuarioExplorar/paginado/{pagina}/{pageSize}/{idUsu}")]
+        public IActionResult GetPaginadoExplorar([FromRoute] int pagina, [FromRoute] int pageSize, [FromRoute] int idUsu)
+        {
+            List<ComunidadesUsuarios> comunidadesUsuario = (_contexto.ComunidadesUsuarios
+                .Where(r => r.id_usu != idUsu && r.comunidad.delete_date == null) //aqui quité el delete date
+                .Skip(pagina * pageSize)
+                .Take(pageSize)
+                .ToList());
+
+            return Ok(comunidadesUsuario);
+        }
+
         // GET api/<ComunidadesController>/5
         [HttpGet("comunidadUsuario/comunidad/{id}")]
         [ProducesResponseType(typeof(ComunidadesUsuarios), StatusCodes.Status200OK)]
