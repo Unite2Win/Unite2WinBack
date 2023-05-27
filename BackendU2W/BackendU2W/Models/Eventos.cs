@@ -35,6 +35,9 @@ namespace BackendU2W.Models
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public DateTime fechaFin { get; set; }
 
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public long asistentes { get; set; }
+
         public Documentos? Imagen { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
