@@ -33,12 +33,72 @@ namespace BackendU2W.Controllers
             return eventos == null || eventos.delete_date != null ? NotFound() : Ok(eventos);
         }
 
+        [HttpGet("/api/eventos/count/comunidadId/{id}")]
+        public async Task<IActionResult> GetCountByComunidadId(int id)
+        {
+            return Ok(_contexto.Eventos.Where(evento => evento.delete_date == null && evento.id_com == id).Count());
+        }
+
+        [HttpGet("/api/eventos/count")]
+        public IActionResult GetCount()
+        {
+            return Ok(_contexto.Eventos.Where(evento => evento.delete_date == null).Count());
+        }
+
+        [HttpGet("/api/eventos/paginado/{pagina}/{pageSize}")]
+        public IActionResult GetPaginado([FromRoute] int pagina, [FromRoute] int pageSize)
+        {
+            List<Eventos> eventos = (_contexto.Eventos
+                .Where(r => r.delete_date == null)
+                .Skip(pagina * pageSize)
+                .Include(r => r.Imagen)
+                .Include(r => r.comunidad)
+                .Take(pageSize)
+                .ToList());
+
+            return Ok(eventos);
+        }
+
+        // GET: api/<EventosController>
+        [HttpGet("/api/eventos/proximosXdias/porComunidad/{numDias}/{comunidadId}")]
+        public IActionResult GetProximosXDias([FromRoute] int numDias, [FromRoute] int comunidadId)
+        {
+            DateTime fechaProximosXDias = DateTime.Now.AddDays(numDias);
+
+            List<Eventos> eventos = (_contexto.Eventos
+                .Where(r => r.delete_date == null && r.id_com == comunidadId && r.fechaInicio <= fechaProximosXDias)
+                .Include(r => r.Imagen)
+                .ToList());
+
+            if (eventos.Count > 0)
+                return Ok(eventos);
+            else
+                return NotFound();
+        }
+
+        // GET: api/<EventosController>
+        [HttpGet("/api/eventos/enCurso/porComunidad/{comunidadId}")]
+        public IActionResult GetEventosEnCurso([FromRoute] int comunidadId)
+        {
+            DateTime fechaActual = DateTime.Now;
+
+            List<Eventos> eventos = (_contexto.Eventos
+                .Where(r => r.delete_date == null && r.id_com == comunidadId && r.fechaInicio <= fechaActual && r.fechaFin > fechaActual)
+                .Include(r => r.Imagen)
+                .ToList());
+
+            if (eventos.Count > 0)
+                return Ok(eventos);
+            else
+                return NotFound();
+        }
+
         // GET api/<EventosController>/comunidadId/5
         [HttpGet("{id}/comunidadId")]
         [ProducesResponseType(typeof(Eventos), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IEnumerable<Eventos>> GetByIdComunidad(int id)
-            => await _contexto.Eventos.Where(evento => evento.id_com == id && evento.delete_date == null).ToListAsync();
+            => await _contexto.Eventos.Where(evento => evento.id_com == id && evento.delete_date == null).Include(r => r.Imagen).ToListAsync();
 
         // POST api/<EventosController>
         [HttpPost]

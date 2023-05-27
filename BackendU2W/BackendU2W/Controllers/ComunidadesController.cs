@@ -17,12 +17,10 @@ namespace BackendU2W.Controllers
             _contexto = contexto;
         }
 
-        // GET: api/<ComunidadesController>
         [HttpGet]
         public async Task<IEnumerable<Comunidades>> Get()
             => await _contexto.Comunidades.Where(comunidad => comunidad.delete_date == null).ToListAsync();
 
-        // GET api/<ComunidadesController>/5
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Comunidades), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -36,7 +34,6 @@ namespace BackendU2W.Controllers
             return comunidades[0] == null || comunidades[0].delete_date != null ? NotFound() : Ok(comunidades[0]);
         }
 
-        //PAGINADO
         [HttpGet("/api/comunidades/count")]
         public IActionResult GetCount()
         {
@@ -57,11 +54,23 @@ namespace BackendU2W.Controllers
             return Ok(idiomas);
         }
 
-        //[HttpGet("usuariosComunidad/{id}")]
-        //[ProducesResponseType(typeof(ComunidadesUsuarios), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public async Task<IEnumerable<ComunidadesUsuarios>> GetByIdComunidad(int id)
-        //    => await _contexto.ComunidadesUsuarios.Where(comunidadUsuarios => comunidadUsuarios.delete_date == null && comunidadUsuarios.id_com == id).ToListAsync();
+        [HttpPost("comunidades/getbyid/array")]
+        public async Task<IActionResult> GetByIdArray([FromBody] int[] listaIds)
+        {
+            List<Comunidades> comunidades = new List<Comunidades>();
+            foreach (int id in listaIds)
+            {
+                List<Comunidades> comunidadesAux = await _contexto.Comunidades.Include(comunidad => comunidad.picture).Where(u => u.id_com == id).ToListAsync();
+                var comunidad = comunidadesAux.Find(comunidad => comunidad.id_com == id);
+                if (comunidad != null)
+                    comunidades.Add(comunidad);
+            }
+
+            if (comunidades.Count <= 0)
+                return NotFound();
+            else
+                return Ok(comunidades);
+        }
 
         // POST api/<ComunidadesController>
         [HttpPost]
