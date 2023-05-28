@@ -32,21 +32,40 @@ namespace BackendU2W.Controllers
             return post == null || post.delete_date != null ? NotFound() : Ok(post);
         }
 
-        //[HttpGet("/api/posts/paginado/{pagina}/{pageSize}")]
-        //public IActionResult GetPaginado([FromRoute] int pagina, [FromRoute] int pageSize)
-        //{
-        //    List<Comunidades> idiomas = (_contexto.Comunidades
-        //        .Where(r => r.delete_date == null)
-        //        .Skip(pagina * pageSize)
-        //        .Include(r => r.picture)
-        //        .Include(r => r.banner)
-        //        .Take(pageSize)
-        //        .ToList());
+        [HttpPost("posts/getbyid/comunidadesUsuarios/array")]
+        public async Task<IActionResult> GetByIdArrayCU([FromBody] int[] listaIds)
+        {
+            List<Posts> posts = new List<Posts>();
+            foreach (int id in listaIds)
+            {
+                List<Posts> postsAux = await _contexto.Posts.Include(post => post.imagen).Where(u => u.id_com_usu == id && u.delete_date == null).ToListAsync();
+                if (postsAux.Any())
+                    postsAux.ForEach(post => posts.Add(post));
+            }
 
-        //    return Ok(idiomas);
-        //}
+            if (posts.Count <= 0)
+                return NotFound();
+            else
+                return Ok(posts.OrderByDescending(x => x.create_date).Take(20));
+        }
 
-        // GET api/<ObjetivosController>/comunidadUsuariosId/5
+        [HttpPost("posts/getbyid/comunidadesUsuarios/array/multimedia")]
+        public async Task<IActionResult> GetByIdArrayCUMultimedia([FromBody] int[] listaIds)
+        {
+            List<Posts> posts = new List<Posts>();
+            foreach (int id in listaIds)
+            {
+                List<Posts> postsAux = await _contexto.Posts.Include(post => post.imagen).Where(u => u.id_com_usu == id && u.delete_date == null && u.imagen != null).ToListAsync();
+                if (postsAux.Any())
+                    postsAux.ForEach(post => posts.Add(post));
+            }
+
+            if (posts.Count <= 0)
+                return NotFound();
+            else
+                return Ok(posts.OrderByDescending(x => x.create_date).Take(20));
+        }
+
         [HttpGet("{id}/comunidadUsuariosId")]
         [ProducesResponseType(typeof(Posts), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

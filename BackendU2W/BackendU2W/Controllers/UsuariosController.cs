@@ -41,7 +41,7 @@ namespace BackendU2W.Controllers
             List<Usuarios> usuarios = new List<Usuarios>();
             foreach (int id in listaIds)
             {
-                List<Usuarios> usuariosAux = await _contexto.Usuarios.Include(usuario => usuario.picture).Where(u => u.id_usu == id).ToListAsync();
+                List<Usuarios> usuariosAux = await _contexto.Usuarios.Include(usuario => usuario.picture).Where(u => u.id_usu == id && u.delete_date == null).ToListAsync();
                 var usuario = usuariosAux.Find(usuario => usuario.id_usu == id);
                 if (usuario != null)
                     usuarios.Add(usuario);

@@ -15,7 +15,7 @@ namespace BackendU2W.Models
         public int id_com { get; set; }
 
         //Esto de abajo es una referencia a Comunidades
-        public Comunidades comunidad { get; set; }
+        public Comunidades? comunidad { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [MaxLength(50, ErrorMessage = "Este campo debe tener un máximo de 50")]
@@ -37,6 +37,9 @@ namespace BackendU2W.Models
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public long asistentes { get; set; }
+
+        [ForeignKey("Imagen")]
+        public long? Imagenid_doc { get; set; }
 
         public Documentos? Imagen { get; set; }
 

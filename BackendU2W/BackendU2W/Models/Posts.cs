@@ -14,7 +14,7 @@ namespace BackendU2W.Models
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int id_com_usu { get; set; }
 
-        public ComunidadesUsuarios comunidadesUsuarios { get; set; }
+        public ComunidadesUsuarios? comunidadesUsuarios { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [StringLength(100, MinimumLength = 1, ErrorMessage = "Este campo debe tener un mínimo de 1 caractéres y máximo de 50")]

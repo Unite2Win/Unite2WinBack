@@ -60,7 +60,7 @@ namespace BackendU2W.Controllers
             List<Comunidades> comunidades = new List<Comunidades>();
             foreach (int id in listaIds)
             {
-                List<Comunidades> comunidadesAux = await _contexto.Comunidades.Include(comunidad => comunidad.picture).Where(u => u.id_com == id).ToListAsync();
+                List<Comunidades> comunidadesAux = await _contexto.Comunidades.Include(comunidad => comunidad.picture).Where(u => u.id_com == id && u.delete_date == null).ToListAsync();
                 var comunidad = comunidadesAux.Find(comunidad => comunidad.id_com == id);
                 if (comunidad != null)
                     comunidades.Add(comunidad);
