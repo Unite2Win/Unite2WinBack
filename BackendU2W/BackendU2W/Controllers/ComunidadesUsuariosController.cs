@@ -67,7 +67,7 @@ namespace BackendU2W.Controllers
         public IActionResult GetPaginadoExplorar([FromRoute] int pagina, [FromRoute] int pageSize, [FromRoute] int idUsu)
         {
             List<ComunidadesUsuarios> comunidadesUsuario = (_contexto.ComunidadesUsuarios
-                .Where(r => r.id_usu != idUsu && r.comunidad.delete_date == null) //aqui quité el delete date
+                .Where(r => r.comunidad.delete_date == null && r.delete_date!=null) //aqui quité el delete date
                 .Skip(pagina * pageSize)
                 .Take(pageSize)
                 .ToList());
