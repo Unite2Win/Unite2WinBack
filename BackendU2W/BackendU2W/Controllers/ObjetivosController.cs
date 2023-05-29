@@ -84,5 +84,20 @@ namespace BackendU2W.Controllers
 
             return NoContent();
         }
+
+        //Put api /<ObjetivosController</5/subirNivel
+        [HttpPut("subirNivel/{id}/{aumento}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutIdUsuNivel([FromRoute] int id, [FromRoute] int aumento)
+        {
+            var usuario = _contexto.Usuarios.Where(u => u.id_usu == id).FirstOrDefault();
+            if(usuario == null) return NotFound();
+            usuario.last_modified = DateTime.Now;
+            usuario.level +=aumento;
+            _contexto.Entry(usuario).State = EntityState.Modified;
+            await _contexto.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
