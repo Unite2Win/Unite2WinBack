@@ -21,7 +21,7 @@ namespace BackendU2W.Controllers
         // GET: api/<EventosController>
         [HttpGet]
         public async Task<IEnumerable<Eventos>> Get()
-            => await _contexto.Eventos.Where(eventos => eventos.delete_date == null).ToListAsync();
+            => await _contexto.Eventos.Where(eventos => eventos.delete_date == null).OrderByDescending(x => x.fechaInicio).ToListAsync();
 
         // GET api/<EventosController>/5
         [HttpGet("{id}")]
@@ -71,7 +71,7 @@ namespace BackendU2W.Controllers
                 .ToList());
 
             if (eventos.Count > 0)
-                return Ok(eventos);
+                return Ok(eventos.OrderByDescending(x => x.fechaInicio));
             else
                 return NotFound();
         }
@@ -88,7 +88,7 @@ namespace BackendU2W.Controllers
                 .ToList());
 
             if (eventos.Count > 0)
-                return Ok(eventos);
+                return Ok(eventos.OrderByDescending(x => x.fechaInicio));
             else
                 return NotFound();
         }

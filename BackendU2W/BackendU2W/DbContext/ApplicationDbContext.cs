@@ -23,11 +23,11 @@ namespace BackendU2W.DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var usuario1 = new Usuarios() { id_usu = 1, nick = "Usuario1", name = "Usuario1", surname = "Usuario1", email = "usuario1@gmail.com", password = "12345", active = true, create_date = DateTime.Today };
-            var usuario2 = new Usuarios() { id_usu = 2, nick = "Usuario2", name = "Usuario2", surname = "Usuario2", email = "usuario2@gmail.com", password = "12345", level = 10, create_date = DateTime.Today };
-            var usuario3 = new Usuarios() { id_usu = 3, nick = "Usuario3", name = "Usuario3", surname = "Usuario3", email = "usuario3@gmail.com", password = "12345", level = 20, active = false, create_date = DateTime.Today };
-            var usuario4 = new Usuarios() { id_usu = 4, nick = "Usuario4", name = "Usuario4", surname = "Usuario4", email = "usuario4@gmail.com", password = "12345", level = 30, active = true, create_date = DateTime.Today, delete_date = new DateTime(2023, 01, 23) };
-            var usuarioAdmin = new Usuarios() { id_usu = 5, nick = "admin", name = "Admin", surname = "Admin", email = "admin@gmail.com", password = "admin", level = 999, active = true, create_date = DateTime.Today };
+            var usuario1 = new Usuarios() { id_usu = 1, nick = "eneko", name = "Eneko", surname = "Sanchez", email = "enekosanchez@gmail.com", password = "12345678", level = 99, active = true, create_date = DateTime.Today };
+            var usuario2 = new Usuarios() { id_usu = 2, nick = "aimar", name = "Aimar", surname = "Martín", email = "aimarmartin@gmail.com", password = "12345678", level = 99, active = true, create_date = DateTime.Today };
+            var usuario3 = new Usuarios() { id_usu = 3, nick = "iker", name = "Iker", surname = "Zarraga", email = "ikerzarraga@gmail.com", password = "12345678", level = 99, active = true, create_date = DateTime.Today };
+            var usuario4 = new Usuarios() { id_usu = 4, nick = "dani", name = "Dani", surname = "Alonso", email = "danialonso@gmail.com", password = "12345678", level = 99, active = true, create_date = DateTime.Today };
+            var usuarioAdmin = new Usuarios() { id_usu = 5, nick = "admin", name = "Admin", surname = "Admin", email = "admin@gmail.com", password = "admin", level = 99, active = true, create_date = DateTime.Today };
 
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios[] { usuario1, usuario2, usuario3, usuario4, usuarioAdmin });
 
